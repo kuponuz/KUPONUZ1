@@ -1,0 +1,139 @@
+{
+  "entities": {
+    "Deal": {
+      "title": "Deal",
+      "description": "Chegirmali aksiya yoki tovar ma'lumotlari (Butun O'zbekiston)",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string", "description": "Tovar yoki xizmat nomi" },
+        "description": { "type": "string", "description": "Tavsifi va xususiyatlari" },
+        "category": { "type": "string", "description": "Kategoriya" },
+        "region": { "type": "string", "description": "Viloyat yoki hudud" },
+        "district": { "type": "string", "description": "Tuman yoki shahar" },
+        "originalPrice": { "type": "number", "description": "Asl narxi (so'mda)" },
+        "discountPrice": { "type": "number", "description": "Chegirma narxi (so'mda)" },
+        "discountPercent": { "type": "number", "description": "Chegirma foizi" },
+        "savedMoney": { "type": "number", "description": "Tejaladigan mablag'" },
+        "paymentMethods": { "type": "string", "description": "To'lov usullari: cash, card yoki cash,card" },
+        "totalItems": { "type": "number", "description": "Jami mavjud soni" },
+        "claimedCount": { "type": "number", "description": "Band qilinganlar soni" },
+        "storeId": { "type": "string", "description": "Do'kon ID" },
+        "storeName": { "type": "string", "description": "Do'kon nomi" },
+        "storePhone": { "type": "string", "description": "Do'kon telefon raqami" },
+        "storeAddress": { "type": "string", "description": "Do'kon manzili" },
+        "imageUrl": { "type": "string", "description": "Mahsulot fotosurati" },
+        "status": { "type": "string", "description": "Aksiya holati: active, pending_review, rejected" },
+        "createdAt": { "type": "string", "description": "Yaratilgan vaqti" },
+        "expiresAt": { "type": "string", "description": "Aksiya tugash muddati" },
+        "isVipTop": { "type": "boolean", "description": "VIP Top aksiya" },
+        "isVerifiedStore": { "type": "boolean", "description": "Tasdiqlangan do'kon" }
+      },
+      "required": ["title", "category", "region", "originalPrice", "discountPrice", "storeName", "storePhone"]
+    },
+    "Store": {
+      "title": "Store",
+      "description": "Hamkor do'kon yoki sotuvchi ma'lumotlari",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "description": "Do'kon nomi" },
+        "category": { "type": "string", "description": "Asosiy yo'nalishi" },
+        "phone": { "type": "string", "description": "Bog'lanish telefoni" },
+        "telegram": { "type": "string", "description": "Telegram akkaunt yoki kanal" },
+        "region": { "type": "string", "description": "Viloyat" },
+        "district": { "type": "string", "description": "Tuman yoki shahar" },
+        "address": { "type": "string", "description": "Aniq ko'cha manzili" },
+        "isVerified": { "type": "boolean", "description": "Rasmiy tasdiqlanganmi" },
+        "logoUrl": { "type": "string", "description": "Do'kon logotipi" },
+        "rating": { "type": "number", "description": "Mijozlar bahosi" }
+      },
+      "required": ["name", "category", "phone", "region", "district"]
+    },
+    "Reservation": {
+      "title": "Reservation",
+      "description": "Mahsulotni chegirma narxida band qilish (bron) chiptasi",
+      "type": "object",
+      "properties": {
+        "bookingCode": { "type": "string", "description": "Unikal bron kodi" },
+        "dealId": { "type": "string", "description": "Aksiya ID" },
+        "dealTitle": { "type": "string", "description": "Aksiya nomi" },
+        "dealImage": { "type": "string", "description": "Aksiya rasmi" },
+        "storeName": { "type": "string", "description": "Do'kon nomi" },
+        "storePhone": { "type": "string", "description": "Do'kon telefoni" },
+        "storeAddress": { "type": "string", "description": "Do'kon manzili" },
+        "region": { "type": "string", "description": "Viloyat" },
+        "district": { "type": "string", "description": "Tuman" },
+        "originalPrice": { "type": "number", "description": "Asl narxi" },
+        "discountPrice": { "type": "number", "description": "To'lanishi kerak bo'lgan narx" },
+        "savedMoney": { "type": "number", "description": "Tejov summasi" },
+        "paymentMethod": { "type": "string", "description": "To'lov usuli: cash (naqd) yoki card (karta)" },
+        "customerName": { "type": "string", "description": "Xaridor ismi" },
+        "customerPhone": { "type": "string", "description": "Xaridor telefoni" },
+        "status": { "type": "string", "description": "Holat: reserved, completed, cancelled" },
+        "reservedAt": { "type": "string", "description": "Band qilingan vaqt" },
+        "expiresAt": { "type": "string", "description": "Bandlik amal qilish muddati" }
+      },
+      "required": ["bookingCode", "dealId", "dealTitle", "discountPrice", "paymentMethod", "status"]
+    },
+    "Notification": {
+      "title": "Notification",
+      "description": "Platforma bildirishnomalari",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string", "description": "Sarlavha" },
+        "message": { "type": "string", "description": "Xabar matni" },
+        "type": { "type": "string", "description": "Turi: promo, telegram, alert" },
+        "timestamp": { "type": "string", "description": "Vaqt tamg'asi" },
+        "read": { "type": "boolean", "description": "O'qilganmi" }
+      },
+      "required": ["title", "message"]
+    },
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "Foydalanuvchi akkaunti (telefon, nik, parol, rol)",
+      "type": "object",
+      "properties": {
+        "phoneNumber": { "type": "string", "description": "Telefon raqami" },
+        "nickname": { "type": "string", "description": "Nik (foydalanuvchi nomi)" },
+        "password": { "type": "string", "description": "Xavfsizlik paroli" },
+        "role": { "type": "string", "description": "Foydalanuvchi roli: buyer, vendor, admin" },
+        "createdAt": { "type": "string", "description": "Ro'yxatdan o'tgan sana" }
+      },
+      "required": ["phoneNumber", "nickname", "role"]
+    },
+    "SystemConfig": {
+      "title": "SystemConfig",
+      "description": "Tizim konfiguratsiyasi va admin telefon raqamlari",
+      "type": "object",
+      "properties": {
+        "adminPhones": { "type": "string", "description": "Ruxsat etilgan admin telefon raqamlari ro'yxati" },
+        "updatedAt": { "type": "string", "description": "Oxirgi yangilanish vaqti" }
+      }
+    }
+  },
+  "firestore": {
+    "/deals/{dealId}": {
+      "schema": "Deal",
+      "description": "Butun O'zbekiston bo'yicha e'lonlar va chegirmalar to'plami"
+    },
+    "/stores/{storeId}": {
+      "schema": "Store",
+      "description": "Hamkor do'konlar to'plami"
+    },
+    "/reservations/{reservationId}": {
+      "schema": "Reservation",
+      "description": "Xaridorlar tomonidan band qilingan buyurtmalar"
+    },
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "Foydalanuvchilar akkauntlari to'plami"
+    },
+    "/notifications/{notificationId}": {
+      "schema": "Notification",
+      "description": "Tizim bildirishnomalari"
+    },
+    "/config/{configId}": {
+      "schema": "SystemConfig",
+      "description": "Tizim sozlamalari va adminlar ro'yxati"
+    }
+  }
+}
